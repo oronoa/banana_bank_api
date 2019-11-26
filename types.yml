@@ -1,0 +1,178 @@
+AircraftTypesResponse:
+  type: array
+  items:
+    type: object
+    properties: 
+      id:
+        type: string
+      title:
+        type: string
+  example:
+    - id : "737"
+      title : Boeing 737
+    - id : "747"
+      title : Boeing 747
+    - id : "A320"
+      title : AirBus 320
+
+SettingsResponse:
+  type: object
+  properties:
+    modules:
+      type: object 
+  example:   
+    modules:
+      module_a: 
+        property_a: x1 
+        size: 8
+      module_b: 
+        property_a: 2
+        ability: 67
+
+RefreshTokenResponse:
+  type: object
+  required:
+    - new_token
+  properties:
+    new_token:
+      description: new JWT token with new expiry of 3 hours
+      example: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyTmFtZSI6ImUwMTAxMDEiLCJyb2xlIjoiYWRtaW4iLCJjb21wYW55IjoiWWFtYXNlZSIsImNvbXBhbnlJbnRlcm5hbElkIjoiWVMiLCJpYXQiOjE1NzM1NzM3MDQsImV4cCI6MTYwNTEwOTcwNH0.R9S2BOVpRx6H9_0lZWKqRg93kgYweR3kN3OZonHQY4w'
+      type: string
+    new_refresh_token: 
+      description: optional new refresh token in case server replaces refresh token
+      example: 'Jyb2xlIjoiYWRtaW4iLCJjb21wYW55IjoiWWFtYXNlZSIsImNvbXBhbnlJ93kgYweR3kN3OZonHQY4w'
+      type: string
+
+DeliveryKeyResponse:
+  type: object
+  required:
+    - delivery_token
+    - expires
+  properties:
+    delivery_token:
+      description: use this token in the /updates /initial routes
+      example: 'Jyb2xlIjoiYWRtaW4iLCJjb21wYW55IjoiWWFtYXNlZSIsImNvbXBhbnlJ93kgYweR3kN3OZonHQY4w'
+      type: string
+    expires: 
+      description: when the token expires
+      example: 15566666606
+      type: integer
+
+HelloResponse:
+  type: object
+  required:
+    - ver
+    - current_app_version
+    - minimal_compatible_app_version
+  properties:
+    ver:
+      description: current server version
+      example: '1.2.4'
+      type: string
+    current_app_version: 
+      description: current app client version
+      example: '4.0.0'
+      type: string
+    minimal_compatible_app_version:
+      description: current minimal supported app or client version
+      example: '3.5.1'
+      type: string
+
+
+LoginResponse:
+  type: object
+  properties:
+    token:
+      type: string
+      example: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyTmFtZSI6ImUwMTAxMDEiLCJyb2xlIjoiYWRtaW4iLCJjb21wYW55IjoiWWFtYXNlZSIsImNvbXBhbnlJbnRlcm5hbElkIjoiWVMiLCJpYXQiOjE1NzM1NzM3MDQsImV4cCI6MTYwNTEwOTcwNH0.R9S2BOVpRx6H9_0lZWKqRg93kgYweR3kN3OZonHQY4w'
+    refresh_token:
+      type: string
+      example : 'R9S2BOVpRx6H9_0lZWKqRg93kgYweR3kN3OZonHQY4w'
+    message:
+      type: string
+      example: 'Hello from Skypath server'
+    user_id: 
+      type: string
+      example : 'ym0565666'
+    role:
+      type: string
+      example: 'pilot'
+    company:
+      type: string
+      example : 'united airlines'
+    company_id:
+      type: string
+      example: 'UA'
+    first_name:
+      type: string
+      example : 'John'
+    last_name:
+      type: string
+      example : 'Baker'
+    email:
+      type: string
+      example: 'john.baker@skypathapi.com'
+
+InitialResponse:
+  type: object
+  properties:
+    skypath_tick:
+      type: integer
+    updates: 
+      type: object
+  example:
+    skypath_tick: 4567
+    updates:
+      turbulences: 
+        -
+          alt: 34
+          tileX: 1020
+          tileY: 681
+          sev: 2
+          ts: 1574057162
+        -
+          alt: 35
+          tileX: 1019
+          tileY: 680
+          sev: 1
+          ts: 1574057163
+      traffic: 
+        -
+          alt: 24695.00122597656
+          hdg: 235.8984375
+          lat: 59.61784533711745
+          lng: -38.32425758432409
+          speed: 269.04998779296875
+          ts: 1574057471
+
+UpdateResponse:
+  type: object
+  properties:
+    skypath_tick:
+      type: integer
+    updates: 
+      type: object
+  example:
+    skypath_tick: 4567
+    updates:
+      turbulences: 
+        -
+          alt: 34
+          tileX: 1020
+          tileY: 681
+          sev: 2
+          ts: 1574057162
+        -
+          alt: 35
+          tileX: 1019
+          tileY: 680
+          sev: 1
+          ts: 1574057163
+      traffic: 
+        -
+          alt: 24695.00122597656
+          hdg: 235.8984375
+          lat: 59.61784533711745
+          lng: -38.32425758432409
+          speed: 269.04998779296875
+          ts: 1574057471
